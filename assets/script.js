@@ -7,12 +7,12 @@
 $(function () {
   function saveInput(){
   $(".saveBtn").click(function(){ 
-    console.log(this)
+    // console.log(this)
   var location = $(this).parent().attr("id")
   var inputValue = $(this).closest('div').find('.description').val();
   localStorage.setItem(location, inputValue)
-    console.log(inputValue)
-    console.log(location)
+    // console.log(inputValue)
+    // console.log(location)
   });
 }
 
@@ -45,22 +45,49 @@ function colorUpdate(){
       default:
         break;
      }
-      console.log(timestamp)
-      console.log(currentHour)
+      // console.log(timestamp)
+      // console.log(currentHour)
   });
 }
-  
-  
-  
-  
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
+  function currentDate(){
+    //will update every seccond but displaying seccond is not needed
+    var now = dayjs().format('dddd MMMM DD, YYYY <br>' +'H:mm A') 
+    $("#currentDate").empty()
+    $("#currentDate").append(now)
+    setTimeout(currentDate,1000)
+    // console.log(now)
+    }
+    
+    function clearAll(){
+      $("#clearAll").click(function(){
 
+        // \/\/\/\/ this would delete all local storage that exists
+
+      //   var keys = Object.keys(localStorage)
+      // for (var i = 0; i < keys.length; i++) {
+      //   var key = keys[i];
+      //   localStorage.setItem(key,"")
+      
+      localStorage.setItem(9,"")
+      localStorage.setItem(10,"")
+      localStorage.setItem(11,"")
+      localStorage.setItem(12,"")
+      localStorage.setItem(13,"")
+      localStorage.setItem(14,"")
+      localStorage.setItem(15,"")
+      localStorage.setItem(16,"")
+      localStorage.setItem(17,"")
+      location.reload();
+      }
+      );
+
+    
+    console.log("clear")
+  }
+clearAll()
+  
+currentDate()
 colorUpdate()
 saveInput()
 displaySaved()
-  
 });
